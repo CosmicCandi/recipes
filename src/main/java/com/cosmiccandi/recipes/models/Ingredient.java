@@ -1,11 +1,22 @@
+/*	Recipe Relations
+	Recipe 1 : M Instructions
+	Recipe 1 : M Ingredients
+	Ingredients 1 : M Measure
+*/
+
 package com.cosmiccandi.recipes.models;
+
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Ingredient {
@@ -21,6 +32,13 @@ public class Ingredient {
 	
 	@Column(length=30)
 	private String preparation;
+	
+	@JsonIgnore
+	@ManyToOne
+	private Recipe recipe;
+	
+	@ManyToOne
+	private Measure measure;
 	
 	//Constructors
 	public Ingredient () {}
@@ -47,6 +65,12 @@ public class Ingredient {
 	}
 	public void setPreparation(String preparation) {
 		this.preparation = preparation;
+	}
+	public Measure getMeasure() {
+		return measure;
+	}
+	public void setMeasure(Measure measure) {
+		this.measure = measure;
 	}	
 
 }

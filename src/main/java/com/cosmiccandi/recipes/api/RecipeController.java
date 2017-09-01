@@ -6,7 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cosmiccandi.recipes.models.Instruction;
 import com.cosmiccandi.recipes.models.Recipe;
+import com.cosmiccandi.recipes.services.IngredientRepository;
+import com.cosmiccandi.recipes.services.InstructionRepository;
+import com.cosmiccandi.recipes.services.MeasureRepository;
 import com.cosmiccandi.recipes.services.RecipeRepository;
 
 @RestController
@@ -14,12 +18,12 @@ import com.cosmiccandi.recipes.services.RecipeRepository;
 public class RecipeController {
 
 	private RecipeRepository recipeRepo;
+	private IngredientRepository ingredientRepo;
+	private InstructionRepository instructionRepo;
+	private MeasureRepository measureRepo;
 	
-	public RecipeController (RecipeRepository recipeRepo) {
-		this.recipeRepo = recipeRepo;
-		Recipe recipe;
-		recipeRepo.save(new Recipe("The good stuff", "A great recipe"));
-		recipeRepo.save(new Recipe("Not so good stuff", "Makes for a horrible recipe!"));
+	public RecipeController (RecipeRepository recipeRepo, IngredientRepository ingredientRepo, InstructionRepository instructionRepo, MeasureRepository measureRepo) {
+		this.recipeRepo = recipeRepo;		
 	}
 	
 	@GetMapping("")
