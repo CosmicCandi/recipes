@@ -3,7 +3,9 @@ package com.cosmiccandi.recipes.api;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,15 +38,26 @@ public class RecipeController {
 		return recipeRepo.findAll();
 	}
 	
+	@GetMapping("/{recipe_id}")
+	public Recipe getRecipeById(@PathVariable Long recipe_id) {
+		Recipe recipe = recipeRepo.findOne(recipe_id);
+		return recipe;
+	}
+	
 	//Create
 	@PostMapping("")
 	public Recipe createRecipe (@RequestBody Recipe recipe) {
 		return recipeRepo.save(recipe);
 		
 	}
-		
+	
 	//Update
 	
+	@PutMapping("/{recipe_id}")
+	public Recipe updateRecipeById(@RequestBody Recipe recipe, @PathVariable Long recipe_id) {
+		recipe.setId(recipe_id);
+		return recipeRepo.save(recipe);	
+	}
 	//Delete
 	
 	
