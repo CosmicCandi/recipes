@@ -9,11 +9,15 @@ package com.cosmiccandi.recipes.models;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 public class Recipe {
@@ -32,10 +36,11 @@ public class Recipe {
 	
 	private String pictureUrl;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="recipe")
 	private List<Instruction> instructions;
 	
-	@OneToMany(mappedBy="recipe")
+	@OneToMany(mappedBy="recipe", fetch=FetchType.EAGER)
 	private List<Ingredient> ingredients;
 
 	//Constructors
