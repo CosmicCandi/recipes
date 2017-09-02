@@ -14,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Instruction {
 	
@@ -27,6 +29,7 @@ public class Instruction {
 	private String instructionText;	
 	
 	@ManyToOne
+	@JsonIgnore
 	private Recipe recipe;
 	
 	//Constructors
@@ -50,6 +53,12 @@ public class Instruction {
 	
 	public void setInstructionText(String instructionText) {
 		this.instructionText = instructionText;
+	}
+	public Recipe getRecipe() {
+		return recipe;
+	}
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
 	}
 	
 }
