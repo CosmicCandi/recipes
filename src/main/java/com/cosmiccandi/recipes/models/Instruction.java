@@ -19,8 +19,8 @@ public class Instruction {
 	
 	//Instance Variables
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="recipe_id_seq")
-	@SequenceGenerator(name="recipe_id_seq", sequenceName="recipe_id_seq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="instruction_id_seq")
+	@SequenceGenerator(name="instruction_id_seq", sequenceName="instruction_id_seq")
 	private long id;
 	
 	@Column(length=500, nullable=false)
