@@ -39,7 +39,7 @@ public class Recipe {
 	private String pictureUrl;
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(mappedBy="recipe", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="recipe", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Instruction> instructions;
 	
 	@OneToMany(mappedBy="recipe", fetch=FetchType.EAGER)
