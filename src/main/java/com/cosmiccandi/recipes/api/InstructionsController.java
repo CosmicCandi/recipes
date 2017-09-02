@@ -3,6 +3,8 @@ package com.cosmiccandi.recipes.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -64,5 +66,15 @@ public class InstructionsController {
 	}
 	
 	//Destroy
-	
+	@DeleteMapping("/{instructionId}")
+	public Instruction deleteInstructionbyInstructionId(@PathVariable Long recipeId, @PathVariable Long instructionId) {
+		try {
+			Instruction instruction = instructionRepo.findOne(instructionId);
+			instruction.setRecipe(null);
+			instructionRepo.delete(instruction);
+			return instruction;
+		} catch (EmptyResultDataAccessException erdae) {
+			return null;
+		}
+	}
 }
