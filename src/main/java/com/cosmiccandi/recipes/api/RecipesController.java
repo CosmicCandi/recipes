@@ -23,14 +23,11 @@ import com.cosmiccandi.recipes.services.RecipeRepository;
 
 @RestController
 @RequestMapping("/api/recipes")
-public class RecipeController {
+public class RecipesController {
 
 	private RecipeRepository recipeRepo;
-	private IngredientRepository ingredientRepo;
-	private InstructionRepository instructionRepo;
-	private MeasureRepository measureRepo;
 	
-	public RecipeController (RecipeRepository recipeRepo, IngredientRepository ingredientRepo, InstructionRepository instructionRepo, MeasureRepository measureRepo) {
+	public RecipesController (RecipeRepository recipeRepo) {
 		this.recipeRepo = recipeRepo;		
 	}
 	
@@ -40,9 +37,9 @@ public class RecipeController {
 		return recipeRepo.findAll();
 	}
 	
-	@GetMapping("/{recipe_id}")
-	public Recipe getRecipeById(@PathVariable Long recipe_id) {
-		Recipe recipe = recipeRepo.findOne(recipe_id);
+	@GetMapping("/{recipeId}")
+	public Recipe getRecipeById(@PathVariable Long recipeId) {
+		Recipe recipe = recipeRepo.findOne(recipeId);
 		return recipe;
 	}
 	
@@ -50,23 +47,22 @@ public class RecipeController {
 	@PostMapping("")
 	public Recipe createRecipe (@RequestBody Recipe recipe) {
 		return recipeRepo.save(recipe);
-		
 	}
 	
 	//Update
 	
-	@PutMapping("/{recipe_id}")
-	public Recipe updateRecipeById(@RequestBody Recipe recipe, @PathVariable Long recipe_id) {
-		recipe.setId(recipe_id);
+	@PutMapping("/{recipeId}")
+	public Recipe updateRecipeById(@RequestBody Recipe recipe, @PathVariable Long recipeId) {
+		recipe.setId(recipeId);
 		return recipeRepo.save(recipe);	
 	}
 	
 	//Delete
 	
-	@DeleteMapping("/{recipe_id}")
-	public Recipe deleteRecipeById(@PathVariable Long recipe_id) {
+	@DeleteMapping("/{recipeId}")
+	public Recipe deleteRecipeById(@PathVariable Long recipeId) {
 		try {
-			Recipe recipe = recipeRepo.findOne(recipe_id);
+			Recipe recipe = recipeRepo.findOne(recipeId);
 			recipeRepo.delete(recipe);
 			return recipe;
 		} catch (EmptyResultDataAccessException erdae) {

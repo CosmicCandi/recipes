@@ -7,6 +7,8 @@
 package com.cosmiccandi.recipes.models;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +39,7 @@ public class Recipe {
 	private String pictureUrl;
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(mappedBy="recipe")
+	@OneToMany(mappedBy="recipe", cascade=CascadeType.ALL)
 	private List<Instruction> instructions;
 	
 	@OneToMany(mappedBy="recipe", fetch=FetchType.EAGER)
