@@ -1,14 +1,17 @@
-package com.cosmiccandi.recipes.models;
+/*	Recipe Relations
+	Recipe 1 : M Instructions
+	Recipe 1 : M Ingredients
+	Ingredients 1 : M Measure
+*/
 
-import java.util.ArrayList;
-import java.util.List;
+package com.cosmiccandi.recipes.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -16,18 +19,15 @@ public class Instruction {
 	
 	//Instance Variables
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="recipe_id_seq")
-	@SequenceGenerator(name="recipe_id_seq", sequenceName="recipe_id_seq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="instruction_id_seq")
+	@SequenceGenerator(name="instruction_id_seq", sequenceName="instruction_id_seq")
 	private long id;
-		
-	@Column(length=500, nullable=false)
-	private String instructionText;
 	
-	@ManyToMany(mappedBy="instructions")
-	private List<Recipe> recipes;
-	public List<Recipe> getRecipes() {
-		return recipes;
-	}
+	@Column(length=500, nullable=false)
+	private String instructionText;	
+	
+	@ManyToOne
+	private Recipe recipe;
 	
 	//Constructors
 	public Instruction () {}

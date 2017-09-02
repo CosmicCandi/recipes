@@ -1,23 +1,23 @@
 package com.cosmiccandi.recipes.models;
 
 public enum Unit {
-	CUP,
-	HALF_CUP,
-	THIRD_CUP,
-	QUARTER_CUP,
-	EIGHTH_CUP,
-	TABLESPOON,
-	HALF_TABLESPOON,
-	TEASPOON,
-	HALF_TEASPOON,
-	QUARTER_TEASPOON,
-	OUNCE,
-	PINT,
-	QUART,
-	LITER,
-	GALLON,
-	PINCH,
-	DASH,
-	DROP,
-	STICK
+	CUP,	 			//0
+	HALF_CUP,			//1
+	THIRD_CUP, 			//2
+	QUARTER_CUP,	 	//3
+	EIGHTH_CUP,			//4
+	TABLESPOON,			//5
+	HALF_TABLESPOON,	//6
+	TEASPOON,			//7
+	HALF_TEASPOON,		//8
+	QUARTER_TEASPOON,	//9
+	OUNCE,				//10
+	PINT,				//11
+	QUART,				//12
+	LITER,				//13
+	GALLON,				//14
+	PINCH,				//15
+	DASH,				//16
+	DROP,				//17
+	STICK				//18
 }
