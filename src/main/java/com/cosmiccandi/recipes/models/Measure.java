@@ -8,6 +8,7 @@ package com.cosmiccandi.recipes.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,7 @@ public class Measure {
 	private Unit units;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy="measure")
+	@OneToMany(mappedBy="measure" , cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Ingredient> ingredients;
 		
 	//Constructors

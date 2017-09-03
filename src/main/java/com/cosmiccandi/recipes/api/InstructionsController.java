@@ -68,12 +68,14 @@ public class InstructionsController {
 	
 	//Destroy
 	@DeleteMapping("/{instructionId}")
-	public Instruction deleteInstructionbyInstructionId(@PathVariable Long recipeId, @PathVariable Long instructionId) {
+	public Recipe deleteInstructionbyInstructionId(@PathVariable Long recipeId, @PathVariable Long instructionId) {
+		Recipe recipe = recipeRepo.findOne(recipeId);
 		try {
 			Instruction instruction = instructionRepo.findOne(instructionId);
 			instruction.setRecipe(null);
 			instructionRepo.delete(instruction);
-			return instruction;
+			recipeRepo.flush();
+			return recipe;
 		} catch (EmptyResultDataAccessException erdae) {
 			return null;
 		}
