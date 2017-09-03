@@ -1,6 +1,5 @@
 package com.cosmiccandi.recipes.api;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -15,9 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cosmiccandi.recipes.models.Instruction;
 import com.cosmiccandi.recipes.models.Recipe;
-import com.cosmiccandi.recipes.services.IngredientRepository;
 import com.cosmiccandi.recipes.services.InstructionRepository;
-import com.cosmiccandi.recipes.services.MeasureRepository;
 import com.cosmiccandi.recipes.services.RecipeRepository;
 
 @RestController
@@ -28,6 +25,7 @@ public class InstructionsController {
 	private RecipeRepository recipeRepo;
 	private InstructionRepository instructionRepo;
 
+	//Constructor
 	public InstructionsController(InstructionRepository instructionRepo, RecipeRepository recipeRepo) {
 		this.instructionRepo = instructionRepo;
 		this.recipeRepo = recipeRepo;
