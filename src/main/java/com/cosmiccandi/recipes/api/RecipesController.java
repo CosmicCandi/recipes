@@ -12,13 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cosmiccandi.recipes.models.Ingredient;
-import com.cosmiccandi.recipes.models.Instruction;
-import com.cosmiccandi.recipes.models.Measure;
 import com.cosmiccandi.recipes.models.Recipe;
-import com.cosmiccandi.recipes.services.IngredientRepository;
-import com.cosmiccandi.recipes.services.InstructionRepository;
-import com.cosmiccandi.recipes.services.MeasureRepository;
 import com.cosmiccandi.recipes.services.RecipeRepository;
 
 @RestController

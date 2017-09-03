@@ -62,7 +62,8 @@ public class InstructionsController {
 		instruction.setRecipe(recipe);
 		instruction.setId(instructionId);
 		instructionRepo.save(instruction);
-		return recipeRepo.findOne(recipeId);
+		recipeRepo.flush();
+		return recipe;
 	}
 	
 	//Destroy
