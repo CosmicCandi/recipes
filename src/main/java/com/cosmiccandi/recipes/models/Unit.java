@@ -19,5 +19,7 @@ public enum Unit {
 	PINCH,				//15
 	DASH,				//16
 	DROP,				//17
-	STICK				//18
+	STICK,				//18
+	WHOLE,				//19
+	HALF				//20
 }

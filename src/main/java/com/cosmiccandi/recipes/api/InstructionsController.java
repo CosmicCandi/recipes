@@ -38,8 +38,10 @@ public class InstructionsController {
 		for (Instruction i : instructions) {
 			i.setRecipe(recipe);
 			instructionRepo.save(i);
+			recipe.getInstructions().add(i);
 		}
-		return recipeRepo.findOne(recipeId);
+		recipeRepo.flush();
+		return recipe;
 	}
 	
 	// Read
