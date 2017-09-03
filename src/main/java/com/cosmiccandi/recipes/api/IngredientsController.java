@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,7 +55,18 @@ public class IngredientsController {
 	public Ingredient getOneIngredient(@PathVariable Long recipeId, @PathVariable Long ingredientId) {
 		return ingredientRepo.findOne(ingredientId);
 	}
+	
 	//Update
+	@PutMapping("/{ingredientId}")
+	public Recipe updateIngredientById(@PathVariable Long recipeId, @PathVariable Long ingredientId, @RequestBody Ingredient ingredient) {
+		Recipe recipe = recipeRepo.findOne(recipeId);
+		ingredient.setRecipe(recipe);
+		ingredient.setId(ingredientId);
+		ingredientRepo.save(ingredient);
+		recipeRepo.flush();
+		return recipe;
+	}
+	
 	//Destroy
 
 }
