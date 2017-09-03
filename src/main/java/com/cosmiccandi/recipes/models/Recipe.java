@@ -42,7 +42,7 @@ public class Recipe {
 	@OneToMany(mappedBy="recipe", cascade=CascadeType.ALL, orphanRemoval=true)
 	private List<Instruction> instructions;
 	
-	@OneToMany(mappedBy="recipe", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="recipe", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)
 	private List<Ingredient> ingredients;
 
 	//Constructors
