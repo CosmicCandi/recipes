@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cosmiccandi.recipes.models.Measure;
 import com.cosmiccandi.recipes.models.Recipe;
+import com.cosmiccandi.recipes.services.MeasureRepository;
 import com.cosmiccandi.recipes.services.RecipeRepository;
 
 @RestController
@@ -20,9 +22,11 @@ import com.cosmiccandi.recipes.services.RecipeRepository;
 public class RecipesController {
 
 	private RecipeRepository recipeRepo;
+	private MeasureRepository measureRepo;
 	
-	public RecipesController (RecipeRepository recipeRepo) {
-		this.recipeRepo = recipeRepo;		
+	public RecipesController (RecipeRepository recipeRepo, MeasureRepository measureRepo) {
+		this.recipeRepo = recipeRepo;
+		this.measureRepo = measureRepo;
 	}
 	
 	//Read
@@ -35,6 +39,11 @@ public class RecipesController {
 	public Recipe getRecipeById(@PathVariable Long recipeId) {
 		Recipe recipe = recipeRepo.findOne(recipeId);
 		return recipe;
+	}
+	
+	@GetMapping("/{recipeId}/measures")
+	public List<Measure> getAllMeasures(@PathVariable Long recipeId) {
+		return measureRepo.findByIngredientRecipeId(recipeId);
 	}
 	
 	//Create
