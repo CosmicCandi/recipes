@@ -12,7 +12,6 @@ import com.cosmiccandi.recipes.models.Measure;
 public interface MeasureRepository extends JpaRepository<Measure, Long> {
 
 	@Query("select m from Measure m join m.ingredients mi where mi.recipe.id = ?1")
-
 	List<Measure> findByIngredientRecipeId(Long recipeId);
 	
 }

@@ -49,8 +49,8 @@ public class IngredientsController {
 	
 	//Read
 	@GetMapping("")
-	public List<Ingredient> getAllIngredients() {
-		return ingredientRepo.findAll();
+	public List<Ingredient> getIngredientsByRecipeId(@PathVariable Long recipeId) {
+		return ingredientRepo.findByRecipeId(recipeId);
 	}
 	
 	@GetMapping("/{ingredientId}")
