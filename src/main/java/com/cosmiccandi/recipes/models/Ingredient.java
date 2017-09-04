@@ -40,9 +40,12 @@ public class Ingredient {
 	
 	//Constructors
 	public Ingredient () {}
-	public Ingredient (String name, String preparation) {
+	public Ingredient (Long id, String name, String preparation, Recipe recipe, Measure measure) {
+		this.id = id;
 		this.name = name;
 		this.preparation = preparation;
+		this.recipe = recipe;
+		this.measure = measure;
 	}
 	
 	//Getters and Setters

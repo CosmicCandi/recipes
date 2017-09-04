@@ -37,7 +37,8 @@ public class Measure {
 		
 	//Constructors
 	public Measure () {}
-	public Measure (int quantity, Unit units) {
+	public Measure (long id, int quantity, Unit units) {
+		this.id = id;
 		this.quantity = quantity;
 		this.units = units;		
 	}

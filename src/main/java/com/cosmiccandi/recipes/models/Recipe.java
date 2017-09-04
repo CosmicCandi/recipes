@@ -47,7 +47,8 @@ public class Recipe {
 
 	//Constructors
 	public Recipe () {}
-	public Recipe (String name, String description, String pictureUrl) {
+	public Recipe (Long id, String name, String description, String pictureUrl) {
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.pictureUrl = pictureUrl;
