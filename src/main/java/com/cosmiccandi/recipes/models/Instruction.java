@@ -34,7 +34,8 @@ public class Instruction {
 	
 	//Constructors
 	public Instruction () {}
-	public Instruction (String instructionText) {
+	public Instruction (Long id, String instructionText) {
+		this.id = id;
 		this.instructionText = instructionText;
 	}
 
