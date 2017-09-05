@@ -54,7 +54,7 @@ public class MeasuresController {
 	// Update
 	@PutMapping("/{measureId}")
 	public Measure updateMeasureById(@PathVariable Long measureId, @PathVariable Long ingredientId, @RequestBody Measure measure) {
-		Ingredient ingredient = ingredientRepo.findOne(ingredientId);
+//		Ingredient ingredient = ingredientRepo.findOne(ingredientId);
 		measure.setId(measureId);
 		measureRepo.save(measure);
 		measureRepo.flush();
