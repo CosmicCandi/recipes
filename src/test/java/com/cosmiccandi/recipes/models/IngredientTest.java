@@ -1,6 +1,6 @@
 package com.cosmiccandi.recipes.models;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.*;
 import org.meanbean.test.BeanTester;
